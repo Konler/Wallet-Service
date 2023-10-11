@@ -21,6 +21,7 @@ public class PlayerServiceImplTest {
     private PlayerRepository playerRepository;
     private HistoryRepository historyRepository;
 
+
     @BeforeEach
     public void setUp() {
         playerRepository = Mockito.mock(PlayerRepository.class);
