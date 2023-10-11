@@ -48,6 +48,7 @@ public interface PlayerRepository {
      * @return the player
      * @throws LoginExistsException the login exists exception
      */
-    Player findPlayerById(Long id)throws LoginExistsException;
-     Player playerExist(String login, Integer password);
+    Player findPlayerById(Long id) throws LoginExistsException;
+
+    Player playerExist(String login, Integer password);
 }

@@ -22,7 +22,8 @@ public interface PlayerService {
 
     /**
      * Gets all history.
-     *метод возвращает все действия пользователя
+     * метод возвращает все действия пользователя
+     *
      * @param playerId the player id
      * @return the all history
      */
@@ -36,6 +37,6 @@ public interface PlayerService {
      */
     void addActionToHistory(Long playerId, String action);
 
-   Player authorizationPlayer(String login, String password) throws LoginExistsException;
+    Player authorizationPlayer(String login, String password) throws LoginExistsException;
 
 }

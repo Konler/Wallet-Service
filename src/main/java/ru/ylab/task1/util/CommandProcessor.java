@@ -81,14 +81,15 @@ public class CommandProcessor {
             return -1L;
         }
     }
-    public Player authorizationPlayer()  {
+
+    public Player authorizationPlayer() {
         outputHandler.displayMessage("Введите логин для авторизации:");
-        String name=inputHandler.getUserInput();
+        String name = inputHandler.getUserInput();
         outputHandler.displayMessage("Введите пароль");
         String password = inputHandler.getUserInput();
         try {
-            return playerService.authorizationPlayer(name,password);
-        }catch (Exception e) {
+            return playerService.authorizationPlayer(name, password);
+        } catch (Exception e) {
             outputHandler.displayMessage("Пользователь с таким логином не существует");
             return null;
         }
@@ -96,17 +97,18 @@ public class CommandProcessor {
 
     /**
      * Read command string.
-     *Запрашивает у пользователя какую операцию он хочет совершить
+     * Запрашивает у пользователя какую операцию он хочет совершить
+     *
      * @return the string
      */
     public String readCommand() {
         outputHandler.displayMessage("""
-                    Выберите тип транзакции:\s
-                    1-кредит(пополнение)
-                    2-дебит(списание)
-                    3-просмотр истории транзакций
-                    4-просмотреть аудит
-                    0-для выхода из меню""");
+                Выберите тип транзакции:\s
+                1-кредит(пополнение)
+                2-дебит(списание)
+                3-просмотр истории транзакций
+                4-просмотреть аудит
+                0-для выхода из меню""");
         return inputHandler.getUserInput();
     }
 
@@ -119,7 +121,7 @@ public class CommandProcessor {
     public void displayAllTransactions(Long playerId) {
         List<String> history = wallerService.findTransactionHistory(playerId);
         StringBuilder sb = new StringBuilder();
-        for (String transaction: history) {
+        for (String transaction : history) {
             sb.append(transaction).append("\n");
         }
         outputHandler.displayMessage(sb.toString());
@@ -133,7 +135,7 @@ public class CommandProcessor {
     public void displayAllHistory(Long playerId) {
         List<String> history = playerService.getAllHistory(playerId);
         StringBuilder sb = new StringBuilder();
-        for (String transaction: history) {
+        for (String transaction : history) {
             sb.append(transaction).append("\n");
         }
         outputHandler.displayMessage(sb.toString());

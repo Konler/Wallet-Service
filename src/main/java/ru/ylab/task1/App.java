@@ -7,16 +7,16 @@ import ru.ylab.task1.model.Player;
 import ru.ylab.task1.model.transaction.TransactionType;
 import ru.ylab.task1.out.OutputHandler;
 import ru.ylab.task1.out.impl.ConsoleOutputHandler;
-import ru.ylab.task1.repository.impl.HistoryRepositoryImpl;
-import ru.ylab.task1.repository.impl.PlayerRepositoryImpl;
-import ru.ylab.task1.repository.impl.TransactionRepositoryImpl;
-import ru.ylab.task1.util.CommandProcessor;
-import ru.ylab.task1.service.PlayerService;
-import ru.ylab.task1.service.impl.PlayerServiceImpl;
-import ru.ylab.task1.service.impl.WalletServiceImpl;
 import ru.ylab.task1.repository.HistoryRepository;
 import ru.ylab.task1.repository.PlayerRepository;
 import ru.ylab.task1.repository.TransactionRepository;
+import ru.ylab.task1.repository.impl.HistoryRepositoryImpl;
+import ru.ylab.task1.repository.impl.PlayerRepositoryImpl;
+import ru.ylab.task1.repository.impl.TransactionRepositoryImpl;
+import ru.ylab.task1.service.PlayerService;
+import ru.ylab.task1.service.impl.PlayerServiceImpl;
+import ru.ylab.task1.service.impl.WalletServiceImpl;
+import ru.ylab.task1.util.CommandProcessor;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -45,8 +45,8 @@ public class App {
         OutputHandler outputHandler = new ConsoleOutputHandler();
         CommandProcessor commandProcessor = new CommandProcessor(inputHandler, outputHandler, wallerService, playerService);
         while (true) {
-        outputHandler.displayMessage("1-Регистрация;2-авторизация");
-        String commandRegisterOrAuthorization=inputHandler.getUserInput();
+            outputHandler.displayMessage("1-Регистрация;2-авторизация");
+            String commandRegisterOrAuthorization = inputHandler.getUserInput();
             Long playerId = -1L;
             if (commandRegisterOrAuthorization.equals("1")) {
 
@@ -55,8 +55,8 @@ public class App {
                     executeCommands(commandProcessor, actions, playerService, playerId, outputHandler);
                 }
             } else {
-                Player p=commandProcessor.authorizationPlayer();
-                if (p!=null) {
+                Player p = commandProcessor.authorizationPlayer();
+                if (p != null) {
                     executeCommands(commandProcessor, actions, playerService, playerId, outputHandler);
                 }
             }
@@ -64,7 +64,8 @@ public class App {
 
 
     }
-    static void executeCommands(CommandProcessor commandProcessor,Map <String,String> actions,PlayerService playerService,Long playerId,OutputHandler outputHandler){
+
+    static void executeCommands(CommandProcessor commandProcessor, Map<String, String> actions, PlayerService playerService, Long playerId, OutputHandler outputHandler) {
         while (true) {
             String command = commandProcessor.readCommand();
             if (actions.containsKey(command)) {

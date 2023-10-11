@@ -9,10 +9,8 @@ import ru.ylab.task1.model.Player;
 import ru.ylab.task1.repository.HistoryRepository;
 import ru.ylab.task1.repository.PlayerRepository;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 public class PlayerServiceImplTest {

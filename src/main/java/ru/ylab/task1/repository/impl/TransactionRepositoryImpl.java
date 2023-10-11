@@ -1,7 +1,7 @@
 package ru.ylab.task1.repository.impl;
 
-import ru.ylab.task1.model.transaction.TransactionType;
 import ru.ylab.task1.model.transaction.Transaction;
+import ru.ylab.task1.model.transaction.TransactionType;
 import ru.ylab.task1.repository.TransactionRepository;
 
 import java.util.List;

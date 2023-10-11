@@ -1,9 +1,9 @@
 package ru.ylab.task1.service.impl;
 
-import ru.ylab.task1.model.transaction.State;
-import ru.ylab.task1.model.transaction.TransactionType;
 import ru.ylab.task1.exception.ImpossibleTransactionException;
+import ru.ylab.task1.model.transaction.State;
 import ru.ylab.task1.model.transaction.Transaction;
+import ru.ylab.task1.model.transaction.TransactionType;
 import ru.ylab.task1.repository.PlayerRepository;
 import ru.ylab.task1.repository.TransactionRepository;
 import ru.ylab.task1.service.WalletService;
@@ -30,7 +30,7 @@ public class WalletServiceImpl implements WalletService {
         this.playerRepository = playerRepository;
     }
 
-    public boolean activateTransaction(Long id, TransactionType type, double amount, Long playerId)  {
+    public boolean activateTransaction(Long id, TransactionType type, double amount, Long playerId) {
         Transaction transaction = transactionRepository.createTransaction(id, type, amount, playerId);
         if (DEBIT.equals(type)) {
             amount *= -1;

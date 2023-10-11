@@ -47,31 +47,31 @@ public class PlayerServiceImpl implements PlayerService {
     @Override
     public Player authorizationPlayer(String login, String password) throws LoginExistsException {
         if (playerRepository.loginExists(login)) {
-             return playerRepository.playerExist(login, Arrays.hashCode(password.toCharArray()));
+            return playerRepository.playerExist(login, Arrays.hashCode(password.toCharArray()));
         }
         throw new LoginExistsException();
     }
 
-        /**
-         * Метод возвращает лист всех действий пользователя
-         *
-         * @param playerId the player id
-         * @return
-         */
-        public List<String> getAllHistory (Long playerId){
-            return historyRepository.getPlayerHistory(playerId).stream().map(HistoryItem::toString).toList();
-        }
-
-        /**
-         * Добавление объекта "история" в репозиторий истории(в мапу) с рандомным id самого объекта HistoryItem,id игрока,действие игрока
-         * и время операции
-         *
-         * @param playerId the player id
-         * @param action   the action
-         */
-        public void addActionToHistory (Long playerId, String action){
-            historyRepository.addHistoryItem(new HistoryItem(random.nextLong(), playerId, action, LocalDateTime.now()));
-        }
-
-
+    /**
+     * Метод возвращает лист всех действий пользователя
+     *
+     * @param playerId the player id
+     * @return
+     */
+    public List<String> getAllHistory(Long playerId) {
+        return historyRepository.getPlayerHistory(playerId).stream().map(HistoryItem::toString).toList();
     }
+
+    /**
+     * Добавление объекта "история" в репозиторий истории(в мапу) с рандомным id самого объекта HistoryItem,id игрока,действие игрока
+     * и время операции
+     *
+     * @param playerId the player id
+     * @param action   the action
+     */
+    public void addActionToHistory(Long playerId, String action) {
+        historyRepository.addHistoryItem(new HistoryItem(random.nextLong(), playerId, action, LocalDateTime.now()));
+    }
+
+
+}

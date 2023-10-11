@@ -29,6 +29,7 @@ public class HistoryRepositoryImpl implements HistoryRepository {
 
     /**
      * Добавление истории в хранилище с ключем id и значение HistoryItem
+     *
      * @param historyItem the history item
      */
     @Override

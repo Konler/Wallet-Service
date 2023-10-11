@@ -9,7 +9,7 @@ public class Player {
     public Player(Long id, String login, int password) {
         this.id = id;
         this.login = login;
-        this.password=password;
+        this.password = password;
         this.balance = 0;
     }
 

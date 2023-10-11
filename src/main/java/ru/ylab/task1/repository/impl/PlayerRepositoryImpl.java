@@ -5,9 +5,7 @@ import ru.ylab.task1.exception.LoginExistsException;
 import ru.ylab.task1.model.Player;
 import ru.ylab.task1.repository.PlayerRepository;
 
-
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * The type Player repository.
@@ -25,15 +23,13 @@ public class PlayerRepositoryImpl implements PlayerRepository {
 
         this.playerMap = playerMap;
     }
+
     public Player findPlayerById(Long id) throws LoginExistsException {
-        if (playerMap.containsKey(id)){
+        if (playerMap.containsKey(id)) {
             return playerMap.get(id);
         }
         throw new LoginExistsException();
     }
-
-
-
 
 
     public void registerPlayer(Player player) {
@@ -42,20 +38,21 @@ public class PlayerRepositoryImpl implements PlayerRepository {
 
     /**
      * Player exist.
-     проверка логина и пароля, если все ок то возврат плеера
+     * проверка логина и пароля, если все ок то возврат плеера
      *
      * @param login    the login
      * @param password the password
      */
     public Player playerExist(String login, Integer password) {
-       return playerMap.values().stream().filter(x->x.getLogin().equals(login)).findFirst().orElseThrow(RuntimeException::new);
+        return playerMap.values().stream().filter(x -> x.getLogin().equals(login)).findFirst().orElseThrow(RuntimeException::new);
     }
 
     public boolean loginExists(String login) {
-        return playerMap.values().stream().map(x ->  login.equals(x.getLogin())).findFirst().isPresent();
+        return playerMap.values().stream().map(x -> login.equals(x.getLogin())).findFirst().isPresent();
     }
+
     public boolean passwordExists(Integer password) {
-        return playerMap.values().stream().map(x ->  password.equals(x.getPassword())).findFirst().isPresent();
+        return playerMap.values().stream().map(x -> password.equals(x.getPassword())).findFirst().isPresent();
     }
 
     public void changePlayerBalanceById(Long id, double amount) throws ImpossibleTransactionException {
@@ -66,7 +63,6 @@ public class PlayerRepositoryImpl implements PlayerRepository {
             throw new ImpossibleTransactionException("Транзакция невозможна");
         }
     }
-
 
 
 }
